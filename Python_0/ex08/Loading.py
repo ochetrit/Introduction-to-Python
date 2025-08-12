@@ -1,10 +1,14 @@
-from time import sleep
-from tqdm import tqdm
 import shutil
 
 
 def progressbar(progress: float, BAR_LENGTH: int) -> str:
+    """Creates the progressbar"""
     progressbar = ""
+    if int(progress) < 10:
+        progressbar += " "
+    if int(progress) < 100:
+        progressbar += " "
+    progressbar += str(int(progress)) + "%|"
     progressbar += int((progress * BAR_LENGTH) / 100) * "█"
     progressbar += int(BAR_LENGTH - ((progress * BAR_LENGTH) / 100)) * " "
     return progressbar
@@ -22,6 +26,5 @@ progressbar every time a value is requested."""
         return None
     for i, elem in enumerate(lst, 1):
         progress = (i / size) * 100
-        print(f"{(i / size) * 100:,.0f}%|{progressbar(progress, BAR_LENGTH)}| {i}/{size}", end = "\r")
+        print(f"{progressbar(progress, BAR_LENGTH)}| {i}/{size}", end="\r")
         yield elem
-
