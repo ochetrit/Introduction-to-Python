@@ -3,6 +3,7 @@ import string
 
 
 def defarg(av):
+    """Return the arg or use input to give an arg"""
     if len(av) == 1:
         return input("What is the text to count?\n")
     else:
