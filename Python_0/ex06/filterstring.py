@@ -9,12 +9,16 @@ def make_lambda(size: int):
 
 def main(av):
     ERR_ARG1 = "I need letters, digits or spaces only in my first arg"
+    ERR_ARG2 = "Second arg needs to be an integer"
     try:
         assert len(av) == 3, "I need 2 arguments"
         for c in av[1]:
             assert c.isalnum() or c == ' ', ERR_ARG1
-        for c in av[2]:
-            assert c.isdigit(), "I need only digits in my second arg."
+        s = av[2]
+        if s[0] == '-' or s[0] == '+':
+            assert s[1:].isdigit(), ERR_ARG2
+        else:
+            assert s.isdigit(), ERR_ARG2
     except AssertionError as e:
         print(f"AssertionError: {e}")
         exit(2)

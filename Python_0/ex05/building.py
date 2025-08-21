@@ -5,7 +5,9 @@ import string
 def defarg(av):
     """Return the arg or use input to give an arg"""
     if len(av) == 1:
-        return input("What is the text to count?\n")
+        arg = input("What is the text to count?\n")
+        arg += "\n"
+        return arg
     else:
         return av[1]
 
@@ -14,10 +16,7 @@ def main(av):
     try:
         assert len(av) <= 2, "More than one argument is provided"
         arg = defarg(av)
-        cr_end = 0
-        if arg.endswith("\n") or arg.endswith("\r"):
-            cr_end += 1
-        print(f"The text contains {len(arg) + cr_end} characters:")
+        print(f"The text contains {len(arg)} characters:")
         print(f"{sum(1 for c in arg if c.isupper())} upper letters")
         print(f"{sum(1 for c in arg if c.islower())} lower letters")
         nb_punct = sum(1 for c in arg if c in string.punctuation)
