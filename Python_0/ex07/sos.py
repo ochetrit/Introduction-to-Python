@@ -49,7 +49,7 @@ def encrypt(arg: str):
 
 def main(av):
     try:
-        assert len(av) == 2, "I need 1 argument"
+        assert len(av) == 2, "I need 1 argument"z
         for c in av[1]:
             assert c.isalnum() or c == ' ', "Only alnum characters or space"
 

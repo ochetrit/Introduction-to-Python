@@ -1,17 +1,20 @@
 from load_image import ft_load
-from PIL import Image, UnidentifiedImageError
-import numpy as np
+from PIL import UnidentifiedImageError
+# import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
+
 
 def main():
+    path = "animal.jpeg"
     try:
-        print(matplotlib.get_backend())
         array_image = ft_load("animal.jpeg")
-        array_zoomed = array_image[200:600, 200:600, 0]
-        # plt.imshow()(array_zoomed, cmap = 'gray')
-        # plt.axis('off')
-        # plt.show()
+        print(array_image)
+        array_zoomed = array_image[100:500, 450:850, 0]
+        print("\033[1;96mNew shape after slicing: \033[1;97m", array_zoomed.shape)
+        print(array_zoomed)
+        plt.imshow(array_zoomed, cmap='gray')
+        plt.axis('on')
+        plt.show()
     except FileNotFoundError:
         print(f"\033[1;91mFile '{path}' is not findable.")
     except PermissionError:
