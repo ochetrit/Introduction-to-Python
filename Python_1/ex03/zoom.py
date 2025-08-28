@@ -24,6 +24,8 @@ def main():
         print(f"\033[1;91mFile '{path}' is not a valid image")
     except Exception as e:
         print(f"\033[1;91mErreur inattendue : {e}")
+    except KeyboardInterrupt:
+        print("\033[1;93m\nProgram has been closed with Ctrl+C.")
 
 
 if __name__ == "__main__":
